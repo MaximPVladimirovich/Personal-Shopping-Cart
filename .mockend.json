@@ -1,6 +1,6 @@
 {
   "List": {
-    "title": { "string": {} },
+    "title": { "loremWords": { "minLength": 2, "maxLength": 6 } },
     "id": { "int": { "min": 0, "max": 1000000 } },
     "comments": {
       "hasMany": "Todo"
@@ -9,15 +9,12 @@
   "Todo": {
     "id": { "int": { "min": 0, "max": 1000000 } },
     "body": {
-      "loremSentence": {
-        "minLength": 3,
-        "maxLength": 10
-      }
+      "loremSentences": { "minLength": 100, "maxLength": 200 }
     },
     "createdAt": {
       "dateTime": {
         "min": "2015-01-01T00:00:00.000Z",
-        "max": "2022-6-31T23:59:59.999Z"
+        "max": "2022-6-31T23:59:59.000Z"
       }
     },
     "post": {
