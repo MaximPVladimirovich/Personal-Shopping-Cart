@@ -2,10 +2,10 @@
   "List": {
     "title": { "string": {} },
     "comments": {
-      "hasMany": "Todos"
+      "hasMany": "Todo"
     }
   },
-  "Todos": {
+  "Todo": {
     "body": { "string": {} },
     "post": {
       "belongsTo": "List"
