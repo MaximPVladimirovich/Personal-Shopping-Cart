@@ -1,12 +1,25 @@
 {
   "List": {
     "title": { "string": {} },
+    "id": { "int": { "min": 0, "max": 1000000 } },
     "comments": {
       "hasMany": "Todo"
     }
   },
   "Todo": {
-    "body": { "string": {} },
+    "id": { "int": { "min": 0, "max": 1000000 } },
+    "body": {
+      "loremSentence": {
+        "minLength": 3,
+        "maxLength": 10
+      }
+    },
+    "createdAt": {
+      "dateTime": {
+        "min": "2015-01-01T00:00:00.000Z",
+        "max": "2022-6-31T23:59:59.999Z"
+      }
+    },
     "post": {
       "belongsTo": "List"
     }
