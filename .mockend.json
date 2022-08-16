@@ -1,12 +1,14 @@
 {
-  "Lists": [
-    {
-      "Name": "List 1",
-      "Items": ["Item 1", "Item 2", "Item 3"]
-    },
-    {
-      "Name": "List 2",
-      "Items": ["Item 1", "Item 2", "Item 3"]
+  "Post": {
+    "title": { "string": {} },
+    "comments": {
+      "hasMany": "Comment"
     }
-  ]
+  },
+  "Comment": {
+    "body": { "string": {} },
+    "post": {
+      "belongsTo": "Post"
+    }
+  }
 }
