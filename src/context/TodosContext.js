@@ -1,10 +1,10 @@
 import { createContext, useCallback, useReducer } from "react";
 
-export const ListsContext = createContext();
+export const TodosContext = createContext();
 
 const initialState = {
-  isLoaing: true,
-  lists: [],
+  isLoading: true,
+  todos: [],
   error: "",
 };
 
@@ -12,46 +12,46 @@ const reducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "FETCH_LISTS":
+    case "FETCH_TODOS":
       return {
         ...state,
-        lists: payload,
+        todos: [payload],
         isLoading: false,
       };
-    case "FETCH_LISTS_ERROR":
+    case "FETCH_TODOS_ERROR":
       return {
         ...state,
-        error: payload,
         isLoading: false,
+        error: payload,
       };
     default:
       return state;
   }
 };
 
-export function ListsContextProvider({ children }) {
+export const TodosContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const fetchLists = useCallback(async () => {
+  const fetchTodos = useCallback(async (listId) => {
     try {
       const data = await fetch(
-        "https://mockend.com/MaximPVladimirovich/Personal-Shopping-Cart/lists"
+        `https://mockend.com/MaximPVladimirovich/Personal-Shopping-Cart/todos?listId_eq=${listId}`
       );
       const result = await data.json();
 
       if (result) {
-        dispatch({ type: "FETCH_LISTS", payload: result });
+        dispatch({ type: "FETCH_TODOS", payload: result });
       }
     } catch (error) {
-      dispatch({ type: "FETCH_LISTS_ERROR", payload: error.message });
+      dispatch({ type: "FETCH_TODOS_ERROR", payload: error.message });
     }
   }, []);
 
   return (
-    <ListsContext.Provider value={{ ...state, fetchLists }}>
+    <TodosContext.Provider value={{ ...state, fetchTodos }}>
       {children}
-    </ListsContext.Provider>
+    </TodosContext.Provider>
   );
-}
+};
 
-export default ListsContext;
+export default TodosContext;

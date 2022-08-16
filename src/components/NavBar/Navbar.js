@@ -18,7 +18,8 @@ function Navbar({ goBack, title, openForm = false }) {
             marginVertical: "5%",
           }}
           onClick={goBack}
-        >{`< Go Back`}</TextButton>
+          text={`< Go Back`}
+        />
       )}
       <Typography variant="h5" sx={{ textAlign: "center", flexBasis: "60%" }}>
         {title}
@@ -30,7 +31,8 @@ function Navbar({ goBack, title, openForm = false }) {
             marginVertical: "5%",
           }}
           onClick={openForm}
-        >{`+ Add Item`}</TextButton>
+          text={`+ Add New`}
+        />
       )}
     </Box>
   );

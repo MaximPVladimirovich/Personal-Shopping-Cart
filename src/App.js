@@ -1,19 +1,24 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import { TodosContextProvider } from "./context/ListContext";
+import { ListsContextProvider } from "./context/ListContext";
+import { TodosContextProvider } from "./context/TodosContext";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Lists from "./Pages/Lists";
+import List from "./Pages/List";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <TodosContextProvider>
-          <Header></Header>
-          <Routes>
-            <Route path="/" element={<Lists />} />
-          </Routes>
-        </TodosContextProvider>
+        <ListsContextProvider>
+          <TodosContextProvider>
+            <Header></Header>
+            <Routes>
+              <Route path="/" element={<Lists />} />
+              <Route path="/lists/:listId" element={<List />} />
+            </Routes>
+          </TodosContextProvider>
+        </ListsContextProvider>
       </BrowserRouter>
     </>
   );

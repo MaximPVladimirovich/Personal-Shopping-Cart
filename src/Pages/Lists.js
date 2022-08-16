@@ -2,19 +2,19 @@ import { useEffect, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar/Navbar";
-import { TodosContext } from "../context/ListContext";
+import { ListsContext } from "../context/ListContext";
 
 function Lists() {
   const navigate = useNavigate();
-  const { todos, isLoading, error, fetchTodos } = useContext(TodosContext);
+  const { lists, isLoading, error, fetchLists } = useContext(ListsContext);
 
   useEffect(() => {
-    !todos.length && fetchTodos();
-  }, [todos, fetchTodos]);
+    !lists.length && fetchLists();
+  }, [lists, fetchLists]);
 
   return (
     <>
-      {navigate && Navbar({ title: "Lists" })}
+      {navigate && <Navbar title="LISTS" />}
       <Box
         sx={{
           display: "flex",
@@ -26,9 +26,10 @@ function Lists() {
         {isLoading || error ? (
           <Box>{isLoading ? "Loading..." : error}</Box>
         ) : (
-          todos.map((todo) => {
+          lists.map((list, index) => {
             return (
               <Box
+                key={list.id + index}
                 sx={{
                   display: "flex",
                   textAlign: "left",
@@ -41,8 +42,8 @@ function Lists() {
                   textDecoration: "none",
                 }}
               >
-                <Link key={todo.id} to={`/lists/${todo.id}`}>
-                  <Typography variant="h5">{todo.title}</Typography>
+                <Link to={`/lists/${list.id}`}>
+                  <Typography variant="h5">{list.title}</Typography>
                 </Link>
               </Box>
             );
