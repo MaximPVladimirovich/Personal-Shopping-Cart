@@ -1,10 +1,13 @@
 import "./App.css";
 import Header from "./components/Header/Header";
+import { TodosContextProvider } from "./context/ListContext";
 
 function App() {
   return (
     <>
-      <Header></Header>
+      <TodosContextProvider>
+        <Header></Header>
+      </TodosContextProvider>
     </>
   );
 }
