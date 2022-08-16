@@ -34,7 +34,9 @@ export function TodosContextProvider({ children }) {
 
   const fetchTodos = useCallback(async () => {
     try {
-      const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+      const data = await fetch(
+        "https://mockend.com/MaximPVladimirovich/Personal-Shopping-Cart/lists"
+      );
       const result = await data.json();
 
       if (result) {

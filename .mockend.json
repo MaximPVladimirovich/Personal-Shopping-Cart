@@ -7,7 +7,7 @@
     }
   },
   "Todo": {
-    "id": { "int": { "min": 0, "max": 1000000 } },
+    "listId": { "int": { "min": 0, "max": 100 } },
     "body": {
       "loremSentences": { "minLength": 100, "maxLength": 200 }
     },
