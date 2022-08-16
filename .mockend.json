@@ -1,0 +1,12 @@
+{
+  "Lists": [
+    {
+      "Name": "List 1",
+      "Items": ["Item 1", "Item 2", "Item 3"]
+    },
+    {
+      "Name": "List 2",
+      "Items": ["Item 1", "Item 2", "Item 3"]
+    }
+  ]
+}

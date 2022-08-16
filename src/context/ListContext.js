@@ -38,11 +38,9 @@ export function TodosContextProvider({ children }) {
       const result = await data.json();
 
       if (result) {
-        console.log(result);
         dispatch({ type: "FETCH_LISTS", payload: result });
       }
     } catch (error) {
-      console.log(error);
       dispatch({ type: "FETCH_LISTS_ERROR", payload: error.message });
     }
   }, []);
